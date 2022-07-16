@@ -16,7 +16,7 @@ import java.util.List;
 //<t> type generique ey type nhotou lena najm nest3mlou en tant que objet
 public interface Iservice<T> {
  public void ajouter (T t);
- public List<T> afficher();
+ public List<T> afficher();  //  public List <T> recherche(String var);
  public void modifier(T t);
  public void supprimer(T t );
  

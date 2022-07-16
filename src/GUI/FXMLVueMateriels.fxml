@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLVueMaterielsController">
+   <children>
+      <Label fx:id="prixlabel" layoutX="33.0" layoutY="296.0" prefHeight="49.0" prefWidth="101.0" text="\$0.99">
+         <font>
+            <Font name="Cambria Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="nameLabel" layoutX="33.0" layoutY="20.0" prefHeight="49.0" prefWidth="137.0" text="Nom">
+         <font>
+            <Font name="Cambria" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="img" fitHeight="210.0" fitWidth="296.0" layoutX="22.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+   <styleClass>
+      <String fx:value="fruit-item" />
+      <String fx:value="shadow" />
+   </styleClass>
+</AnchorPane>
