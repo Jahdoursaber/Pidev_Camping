@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="525.0" prefWidth="921.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLGestionUserController">
+   <children>
+      <ImageView fitHeight="542.0" fitWidth="975.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@camp3.jpg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="Recherche" layoutX="319.0" layoutY="14.0" onKeyReleased="#ChercherUser" prefHeight="31.0" prefWidth="375.0" promptText="Taper ici pour rechercher" />
+      <ImageView fitHeight="86.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logo.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="datatable" layoutX="95.0" layoutY="66.0" opacity="0.64" prefHeight="281.0" prefWidth="855.0">
+         <columns>
+            <TableColumn fx:id="ClnNom" prefWidth="75.0" text="Nom" />
+            <TableColumn fx:id="ClnPrenom" prefWidth="103.0" text="Prenom" />
+            <TableColumn fx:id="ClnEmail" prefWidth="90.0" text="Email" />
+            <TableColumn fx:id="ClnAge" prefWidth="75.0" text="Age" />
+            <TableColumn fx:id="ClnTel" prefWidth="75.0" text="Telephone" />
+            <TableColumn fx:id="ClnGenre" prefWidth="115.0" text="Genre" />
+            <TableColumn fx:id="ClnType" prefWidth="115.0" text="Type" />
+            <TableColumn fx:id="ClnRole" prefWidth="115.0" text="Role" />
+         </columns>
+      </TableView>
+      <Button fx:id="AjouterButton" layoutX="799.0" layoutY="365.0" mnemonicParsing="false" onAction="#showFormAjouter" prefHeight="31.0" prefWidth="151.0" style="-fx-background-color: #009686;" text="Ajouter" textFill="WHITE" />
+      <Button fx:id="supprimerButton" layoutX="799.0" layoutY="408.0" mnemonicParsing="false" onAction="#supprimerUser" prefHeight="31.0" prefWidth="151.0" style="-fx-background-color: #009686;" text="Supprimer" textFill="WHITE" />
+      <Button fx:id="modifierButton" layoutX="799.0" layoutY="453.0" mnemonicParsing="false" onAction="#showFormModifer" prefHeight="31.0" prefWidth="151.0" style="-fx-background-color: #009686;" text="Modifier" textFill="WHITE" />
+      <Button layoutX="799.0" layoutY="14.0" mnemonicParsing="false" onAction="#Retour" prefHeight="31.0" prefWidth="151.0" style="-fx-background-color: #009686;" text="Accueil" textFill="WHITE" />
+      <AnchorPane fx:id="anchorForm" layoutX="14.0" layoutY="365.0" prefHeight="172.0" prefWidth="770.0">
+         <children>
+            <TextField fx:id="TxtPrenom" layoutX="84.0" layoutY="42.0" opacity="0.67" />
+            <TextField fx:id="TxtEmail" layoutX="84.0" layoutY="87.0" opacity="0.67" />
+            <TextField fx:id="TxtAge" layoutX="84.0" layoutY="128.0" opacity="0.67" />
+            <TextField fx:id="TxtNom" layoutX="84.0" layoutY="2.0" opacity="0.67" />
+            <TextField fx:id="TxtTel" layoutX="355.0" layoutY="2.0" opacity="0.67" />
+            <Label layoutX="2.0" layoutY="5.0" prefHeight="17.0" prefWidth="68.0" text="Nom" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="2.0" layoutY="45.0" prefHeight="17.0" prefWidth="68.0" text="Prenom" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="2.0" layoutY="89.0" prefHeight="17.0" prefWidth="68.0" text="Email" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="2.0" layoutY="125.0" prefHeight="17.0" prefWidth="68.0" text="Age" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="266.0" layoutY="5.0" prefHeight="17.0" prefWidth="68.0" text="Telephone" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="266.0" layoutY="45.0" prefHeight="17.0" prefWidth="68.0" text="Genre" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="266.0" layoutY="89.0" prefHeight="17.0" prefWidth="68.0" text="Type" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="266.0" layoutY="127.0" prefHeight="17.0" prefWidth="68.0" text="Role" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="save" layoutX="536.0" layoutY="88.0" mnemonicParsing="false" onAction="#submitForm" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: #009686;" text="Ajouter" textFill="WHITE" />
+            <Button fx:id="Annuler" layoutX="536.0" layoutY="121.0" mnemonicParsing="false" onAction="#CloseForm" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #009686;" text="Annuler" textFill="WHITE" />
+            <TextField fx:id="TxtRole" layoutX="355.0" layoutY="123.0" opacity="0.67" />
+            <TextField fx:id="TxtGenre" layoutX="355.0" layoutY="42.0" opacity="0.67" />
+            <TextField fx:id="TxtType" layoutX="355.0" layoutY="87.0" opacity="0.67" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

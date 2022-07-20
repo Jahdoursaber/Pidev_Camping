@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400" prefWidth="600" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLVueMembreController">
+   <children>
+      <ImageView fitHeight="467.0" fitWidth="712.0" layoutX="-10.0" pickOnBounds="flase" preserveRatio="true">
+         <image>
+            <Image url="@camp3.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="BtnProfil" layoutX="24.0" layoutY="118.0" mnemonicParsing="false" onAction="#ConsulterProfil" opacity="0.5" prefHeight="66.0" prefWidth="328.0" style="-fx-background-color: #009686;" text="Consulter Profil" textFill="WHITE">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="37.0" fitWidth="40.0" layoutX="285.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Admin.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="LNom" layoutX="316.0" layoutY="15.0" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Button fx:id="BtnDeconnexion" layoutX="585.0" layoutY="14.0" mnemonicParsing="false" onAction="#Deconnexion" opacity="0.58" prefHeight="28.0" prefWidth="103.0" style="-fx-background-color: #009686;" text="Deconnexion" textFill="WHITE" underline="true" />
+      <ImageView fitHeight="88.0" fitWidth="103.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logo.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="24.0" layoutY="208.0" mnemonicParsing="false" opacity="0.5" prefHeight="54.0" prefWidth="328.0" style="-fx-background-color: #009686;" text="Reclamation" textFill="WHITE">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Button>
+      <Button layoutX="369.0" layoutY="118.0" mnemonicParsing="false" opacity="0.5" prefHeight="69.0" prefWidth="328.0" style="-fx-background-color: #009686;" text="Camping" textFill="WHITE">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Button>
+      <Button layoutX="369.0" layoutY="208.0" mnemonicParsing="false" opacity="0.5" prefHeight="60.0" prefWidth="328.0" style="-fx-background-color: #009686;" text="Rondonne" textFill="WHITE">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Button>
+      <Button layoutX="166.0" layoutY="301.0" mnemonicParsing="false" opacity="0.5" prefHeight="69.0" prefWidth="436.0" style="-fx-background-color: #009686;" text="Gestion Centre de Camping" textFill="WHITE">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Button>
+      
+
+   </children>
+</AnchorPane>
