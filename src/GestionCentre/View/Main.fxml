@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GestionCentre.View.MainController">
+   <children>
+      <TableView fx:id="tabU" layoutX="27.0" layoutY="19.0" prefHeight="589.0" prefWidth="606.0">
+        <columns>
+          <TableColumn fx:id="colid" prefWidth="100.0" text="ID" />
+          <TableColumn fx:id="colName" prefWidth="54.0" text="Name" />
+            <TableColumn fx:id="coldescription" prefWidth="114.0" text="Description" />
+            <TableColumn fx:id="colphoto" prefWidth="87.0" text="photo" />
+            <TableColumn fx:id="coladdresse" prefWidth="250.0" text="Addresse" />
+        </columns>
+      </TableView>
+      <VBox layoutX="655.0" layoutY="230.0" prefHeight="218.0" prefWidth="173.0" spacing="27.0">
+         <children>
+            <Label text="ID" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="10.0" text="Nom" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="27.0" text="Description" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="44.0" text="Photo" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="61.0" prefHeight="73.0" prefWidth="151.0" text="Addresse" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="19.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="844.0" layoutY="231.0" prefHeight="245.0" prefWidth="191.0" spacing="30.0">
+         <children>
+            <TextField fx:id="txtid" />
+            <TextField fx:id="txtName" layoutX="10.0" layoutY="10.0" />
+            <TextField fx:id="txtdescription" layoutX="10.0" layoutY="35.0" />
+            <Button fx:id="uploadfileinput" mnemonicParsing="false" onAction="#inputFile" prefHeight="25.0" prefWidth="195.0" text="Upload Photo" />
+            <TextField fx:id="txtaddresse" />
+         </children>
+      </VBox>
+      <Button fx:id="btnA" layoutX="666.0" layoutY="531.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="50.0" prefWidth="110.0" text="Ajouter" textFill="GREEN">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnM" layoutX="789.0" layoutY="531.0" mnemonicParsing="false" onAction="#modifier" prefHeight="50.0" prefWidth="110.0" text="Modifier" textFill="ORANGE">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnS" layoutX="912.0" layoutY="531.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="50.0" prefWidth="110.0" text="Supprimer" textFill="RED">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Button>
+      <Label layoutX="666.0" layoutY="58.0" prefHeight="87.0" prefWidth="425.0" text="Centre Camping" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="49.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
