@@ -33,7 +33,6 @@ router.post("/create/:label", (req, res) => {
 })
 
 router.post("/edit/:id", (req, res) => {
-    console.log(req.body.label);
     pool.query("update `categorie` set label=? where id=?",
         [
             req.body.label,
@@ -44,10 +43,10 @@ router.post("/edit/:id", (req, res) => {
             res.json(category)
 
         });
+
 })
 
 router.post("/delete/:id", (req, res) => {
-    console.log(req.body.label);
     pool.query("delete from `categorie` where id=?",
         [
 

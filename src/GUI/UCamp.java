@@ -26,8 +26,8 @@ public class UCamp extends Application {
     public void start(Stage primaryStage) {
          Parent root;
         try {
-           root = FXMLLoader.load(getClass().getResource("FXMLVueAdministrateur.fxml"));
-         //  root = FXMLLoader.load(getClass().getResource("FXMLVueClient.fxml"));
+          // root = FXMLLoader.load(getClass().getResource("FXMLVueAdministrateur.fxml"));
+          root = FXMLLoader.load(getClass().getResource("FXMLVueClient.fxml"));
            Scene scene = new Scene(root);
             primaryStage.setTitle("U-CAMP");
             primaryStage.setScene(scene);

@@ -13,6 +13,7 @@ import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.events.ActionListener;
 import com.ucamp.myapp.entities.Categorie;
+import com.ucamp.myapp.entities.Materiels;
 import com.ucamp.myapp.utils.Statics;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,32 +24,40 @@ import java.util.List;
  *
  * @author Dell
  */
-public class ServiceCategorie {
-     public ArrayList<Categorie> Categories;
+public class ServiceMateriel {
+     public ArrayList<Materiels> Materiels;
     
-    public static ServiceCategorie instance=null;
+    public static ServiceMateriel instance=null;
     public boolean resultOK;
     private ConnectionRequest reqGet;
     private ConnectionRequest reqPost;
 
-    private ServiceCategorie() {
+    private ServiceMateriel() {
          reqGet = new ConnectionRequest();
          reqPost= new ConnectionRequest();
          //conflit mabin l get w el post ki yabdaw fard page 
          
     }
 
-    public static ServiceCategorie getInstance() {
+    public static ServiceMateriel getInstance() {
         if (instance == null) {
-            instance = new ServiceCategorie();
+            instance = new ServiceMateriel();
         }
         return instance;
     }
 
-    public boolean AddCategorie(Categorie c) {
-       //
-       String url = Statics.BASE_URL + "categorie/create/"+c.getLabel();
-     
+    public boolean Add(Materiels M) {
+      
+       String url = Statics.BASE_URL + "material/create";
+       reqPost.addArgument("id", "0");
+       reqPost.addArgument("nom", M.getNom());
+       reqPost.addArgument("description", M.getDescription());
+       reqPost.addArgument("refrence", M.getReference());
+       reqPost.addArgument("photo", "desktop.PNG");
+       reqPost.addArgument("etat", M.getEtat());
+       reqPost.addArgument("prix",String.valueOf(M.getPrix()));
+       reqPost.addArgument("idCat",String.valueOf(M.getIdCat()));
+
        reqPost.setUrl(url);
       
        //
@@ -62,57 +71,64 @@ public class ServiceCategorie {
             }
         });
         NetworkManager.getInstance().addToQueueAndWait(reqPost);
+        reqPost.removeAllArguments();
+        
         return resultOK;
     }
     
-    public ArrayList<Categorie> parseCategorie(String jsonText){
+    public ArrayList<Materiels> parseMateriels(String jsonText){
+           
         try {
-            Categories=new ArrayList<>();
+            Materiels=new ArrayList<>();
             JSONParser j = new JSONParser();
             Map<String,Object> tasksListJson = 
                j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
             
             List<Map<String,Object>> list = (List<Map<String,Object>>)tasksListJson.get("root");
             for(Map<String,Object> obj : list){
-                Categorie c = new Categorie();
                 float id = Float.parseFloat(obj.get("id").toString());
-                c.setId((int)id);
-                if (obj.get("label")==null)
-              c.setLabel("null");
-                else
-              c.setLabel(obj.get("label").toString());
-                Categories.add(c);
+             float prix = Float.parseFloat(obj.get("prix").toString());
+             float idCat=Float.parseFloat(obj.get("idCat").toString());
+   
+                Materiels m =  new Materiels((int)id,obj.get("nom").toString(), obj.get("description").toString(),  obj.get("refrence").toString(), 
+                       obj.get("photo").toString(),  obj.get("etat").toString(), prix,(int)idCat);
+              Materiels.add(m);
             }
             
             
         } catch (IOException ex) {
             
         }
-        return Categories;
+        return Materiels;
+        
     }
     
-    public ArrayList<Categorie> getAll(){
-        //String url = Statics.BASE_URL+"/tasks/";
-        String url = Statics.BASE_URL+"categorie/findAll";
-        //System.out.println("===>"+url);
+    public ArrayList<Materiels> getAll(){
+        String url = Statics.BASE_URL+"material/findAll";
         reqGet.setUrl(url);
         reqGet.setPost(false);
         reqGet.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
-                Categories = parseCategorie(new String(reqGet.getResponseData()));
+                Materiels = parseMateriels(new String(reqGet.getResponseData()));
                 reqGet.removeResponseListener(this);
                 
             }
         });
         NetworkManager.getInstance().addToQueueAndWait(reqGet);
-        return Categories;
+        return Materiels;
     }
 
-    public boolean EditCat(int id, String text) {
-          String url = Statics.BASE_URL + "categorie/edit/"+id;
-          
-     reqPost.addArgument("label", text);
+    public boolean EditCat(Materiels M) {
+       reqPost.addArgument("nom", M.getNom());
+       reqPost.addArgument("description", M.getDescription());
+       reqPost.addArgument("refrence", M.getReference());
+       reqPost.addArgument("photo", "desktop.PNG");
+       reqPost.addArgument("etat", M.getEtat());
+       reqPost.addArgument("prix",String.valueOf(M.getPrix()));
+       reqPost.addArgument("idCat",String.valueOf(M.getIdCat()));
+          String url = Statics.BASE_URL + "material/edit/"+M.getId();
+      
        reqPost.setUrl(url);
      
        reqPost.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -128,7 +144,7 @@ public class ServiceCategorie {
 
     }
     public boolean Sup(int id) {
-          String url = Statics.BASE_URL + "categorie/delete/"+id;
+          String url = Statics.BASE_URL + "material/delete/"+id;
           
        reqPost.setUrl(url);
      

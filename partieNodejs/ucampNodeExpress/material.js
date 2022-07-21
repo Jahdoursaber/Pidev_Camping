@@ -20,16 +20,20 @@ function getConnection() {
 
 
 router.post("/create", (req, res) => {
-    console.log(req.body);
+    var id = parseInt(req.body.id);
+    var idCat=parseInt(req.body.idCat);
+    var prix= parseFloat(req.body.prix);
+
+
     pool.query("INSERT INTO `material` VALUES (?,?,?,?,?,?,?,?)",
-        [req.body.id,
+        [id,
         req.body.nom,
             req.body.description,
             req.body.refrence,
             req.body.photo,
             req.body.etat,
-            req.body.prix,
-            req.body.idCat],
+            prix,
+            idCat],
         (err, material, fields) => {
            if(err)
             console.log(err)
@@ -40,6 +44,9 @@ router.post("/create", (req, res) => {
 })
 
 router.post("/edit/:id", (req, res) => {
+    var idCat=parseInt(req.body.idCat);
+    var prix= parseFloat(req.body.prix);
+
     pool.query("update `material` set nom=? , description=?, refrence=?,photo=?,etat=?,prix=?,idCat=? where id=?",
     [
         req.body.nom,
@@ -47,8 +54,8 @@ router.post("/edit/:id", (req, res) => {
             req.body.refrence,
             req.body.photo,
             req.body.etat,
-            req.body.prix,
-            req.body.idCat,
+            prix,
+            idCat,
             req.params.id],
         (err, material, fields) => {
 

@@ -12,12 +12,15 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -25,6 +28,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -70,12 +74,12 @@ public class FXMLVueClientController implements Initializable {
                 fxmlLoader.setLocation(getClass().getResource("FXMLVueMateriels.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
 
-                FXMLVueMaterielsController itemController = fxmlLoader.getController();
+                FXMLVueMaterielsController itemController = fxmlLoader.getController(); 
                 itemController.setData(this.DataMat.get(i));
 
                 if (column == 3) {
                     column = 0;
-                    row++;
+                    row++; 
                 }
 
                 grid.add(anchorPane, column++, row); //(child,column,row)
@@ -205,7 +209,7 @@ public class FXMLVueClientController implements Initializable {
         
        
         try {
-            for (int i = 0; i < this.DataMat.size(); i++) {
+            for (int i = 0; i < this.DataMat.size(); i++) {    
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("FXMLVueMateriels.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
@@ -234,6 +238,24 @@ public class FXMLVueClientController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void ConsulterPanier(MouseEvent event) {
+         try {
+              //récupération fichier fxml
+              
+              FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLVuePanierClient.fxml"));
+              //récupération du root  à partir du fichier fxml
+              
+              Parent root = loader.load();
+              //récupération du controller lier au fichier fxml
+              
+              FXMLVuePanierClientController dpc = loader.getController();
+              all.getScene().setRoot(root);
+          } catch (IOException ex) {
+              Logger.getLogger(FXMLVueAdminstrateurCategorieController.class.getName()).log(Level.SEVERE, null, ex);
+          }
     }
     
 }
