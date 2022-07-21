@@ -107,7 +107,7 @@ public class CrudCentre implements IService<Centre>{
         String req = "UPDATE `centre_camping` SET `Name`=?,`description`=?,`photo`=?,`addresse`=? WHERE id = ?";
         try {
             PreparedStatement pst = con.prepareStatement(req);
-           pst.setInt(4, e.getId());
+            pst.setInt(4, e.getId());
             pst.setString(2, e.getName());
             pst.setString(1, e.getDescription());
             pst.setString(3, e.getAddresse());
